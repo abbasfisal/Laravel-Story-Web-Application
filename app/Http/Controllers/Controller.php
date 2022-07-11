@@ -6,14 +6,25 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function login()
+
+    public function handleSuccess($result, $message, $statusCode = 200)
     {
-        Auth::attempt(['username'=>'ali', 'password'=>'reza']);
+        $response = [
+            'success' => true,
+            'data'    => $result,
+            'message' => $message
+        ];
+
+        return response()->json($response, $statusCode);
+    }
+
+    public function handleError()
+    {
+
     }
 }
