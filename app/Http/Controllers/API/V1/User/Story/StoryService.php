@@ -13,7 +13,7 @@ class StoryService extends Controller
     public static function store(Request $request)
     {
         $request['user_id']=Auth::id();
-        
+
         return Story::query()
              ->create($request->toArray());
     }

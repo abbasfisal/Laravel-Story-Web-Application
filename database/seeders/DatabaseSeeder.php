@@ -2,16 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Story;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
+
     public function run()
     {
 
@@ -19,8 +16,19 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CategorySeeder::class);
 
+        $this->createUserWithDummyStories();
     }
 
+    /*
+     |------------------------------
+     | PRIVATE METHODS
+     |------------------------------
+     |
+     |
+     |
+     */
+
+    
     private function createAdmin()
     {
 
@@ -52,4 +60,17 @@ class DatabaseSeeder extends Seeder
 
         $this->command->table($header, [$body]);
     }
+
+    private function createUserWithDummyStories(): void
+    {
+        Story::query()
+             ->truncate();
+
+        User::factory(rand(3, 5))
+            ->hasStories(rand(5, 10))
+            ->create();
+    }
+
+
+
 }
