@@ -92,8 +92,15 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
      |------------------------------
      */
     Route::group(['prefix' => 'comment', 'as' => 'comment:'], function () {
-        Route::post('/add', [CommentController::class , 'add'])
+
+        Route::post('/add', [CommentController::class, 'add'])
              ->name('add');
+
+
+        Route::post('/reply', [CommentController::class, 'reply'])
+             ->name('reply');
+
     });
+
 
 });

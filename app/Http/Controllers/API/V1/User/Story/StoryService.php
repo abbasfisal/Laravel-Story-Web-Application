@@ -33,4 +33,14 @@ class StoryService extends Controller
         }
         return false;
     }
+
+    /**
+     * @param string $story_id
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null
+     */
+    public static function find(string $story_id)
+    {
+        return Story::query()
+                    ->find($story_id);
+    }
 }
