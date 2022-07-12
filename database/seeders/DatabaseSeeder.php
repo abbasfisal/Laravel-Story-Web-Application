@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
 
         $this->createAdmin();
 
+        $this->call(CategorySeeder::class);
+
     }
 
     private function createAdmin()
