@@ -23,8 +23,19 @@ class Controller extends BaseController
         return response()->json($response, $statusCode);
     }
 
-    public function handleError()
+    public function handleError($error, $errorMessages = [], $code = 404)
     {
+        $response = [
+            'success' => false,
+            'message' => $error,
+        ];
 
+
+        if(!empty($errorMessages)){
+            $response['data'] = $errorMessages;
+        }
+
+
+        return response()->json($response, $code);
     }
 }

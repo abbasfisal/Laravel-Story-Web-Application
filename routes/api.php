@@ -25,5 +25,19 @@ Route::get('/hi', function () {
     return ['hi' => 'hii'];
 });
 
+/*
+ |------------------------------
+ | Auth
+ |------------------------------
+ |
+ |
+ |
+ */
 Route::post('register', [AuthController::class, 'register'])
      ->name('register');
+
+Route::post('login', [AuthController::class, 'login'])
+     ->name('login');
+
+Route::post('logout', [AuthController::class, 'logOut'])
+     ->name('logout')->middleware('auth:sanctum');
