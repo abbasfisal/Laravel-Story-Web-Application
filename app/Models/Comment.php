@@ -5,21 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Story extends Model
+class Comment extends Model
 {
     use HasFactory;
 
-    protected $table = 'stories';
+    protected $table = 'comments';
 
     protected $fillable = [
         'user_id',
-        'title',
-        'text'
+        'parent_id',
+        'text',
+        'commentable_id',
+        'commentable_type'
     ];
+
 
     /*
      |------------------------------
-     | RELATION
+     | RELATIONS
      |------------------------------
      |
      |
@@ -30,19 +33,13 @@ class Story extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function Category()
+    public function replies()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasMany(Comment::class, 'parent_id', 'id');
     }
 
-    public function storylikes()
+    public function commentable()
     {
-        return $this->hasMany(StoryLike::class);
-    }
-
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable')
-                    ->whereNull('parent_id');
+        return $this->morphTo();
     }
 }

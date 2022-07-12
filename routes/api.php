@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\API\V1\Admin\Category\CategoryController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
+use App\Http\Controllers\API\V1\User\Comment\CommentController;
 use App\Http\Controllers\API\V1\User\Story\StoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +84,16 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
         Route::post('/like', [StoryController::class, 'like'])
              ->name('like');
 
+    });
+
+    /*
+     |------------------------------
+     | COMMENTS
+     |------------------------------
+     */
+    Route::group(['prefix' => 'comment', 'as' => 'comment:'], function () {
+        Route::post('/add', [CommentController::class , 'add'])
+             ->name('add');
     });
 
 });

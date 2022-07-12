@@ -13,3 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/hi', function () {
+
+    return $s = \App\Models\Story::with(['comments.replies' ,'comments.user', 'comments.replies.user'])->where('id' , 3)->get();
+});

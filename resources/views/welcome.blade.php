@@ -20,6 +20,7 @@
             }
         </style>
     </head>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus adipisci beatae consequuntur deleniti dicta distinctio, doloremque dolorum eaque eius error esse laudantium libero, odit officia quae quos repellat vitae!
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))

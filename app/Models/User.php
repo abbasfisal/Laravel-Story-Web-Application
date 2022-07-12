@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(StoryLike::class);
     }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class , 'commentable');
+    }
 }
