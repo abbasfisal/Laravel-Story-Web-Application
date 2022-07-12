@@ -38,6 +38,7 @@ return [
 
         //CRUD Fail Message
         'fail_create'   => 'Fail While Creating!',
+        'exist'        => 'The Record was exists'
 
     ]
 ];

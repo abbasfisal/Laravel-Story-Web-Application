@@ -5,18 +5,22 @@ namespace Database\Seeders;
 use App\Models\Story;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
 
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
 
-        $this->createAdmin();
+        $this->Seed_Admin_NormalUser();
 
         $this->call(CategorySeeder::class);
 
         $this->createUserWithDummyStories();
+
+        Schema::enableForeignKeyConstraints();
 
     }
 
@@ -30,37 +34,14 @@ class DatabaseSeeder extends Seeder
      */
 
 
-    private function createAdmin()
+    private function Seed_Admin_NormalUser()
     {
-
-        $this->DeleteAdmin();
+        User::query()
+            ->truncate();
 
         $this->call(UserSeeder::class);
-
-        $this->createAdminTableCommand();
-
     }
 
-    private function DeleteAdmin(): void
-    {
-        $u = User::query()
-                 ->where([
-                     'name'     => 'admin',
-                     'email'    => 'admin@a.b',
-                     'username' => 'admin',
-                     'avatar'   => '',
-                 ])
-                 ->first();
-        $u->delete();
-    }
-
-    private function createAdminTableCommand(): void
-    {
-        $header = ['#', 'email', 'password', 'type'];
-        $body = ['#' => '1', 'email' => 'admin@a.b', 'password' => '123456', 'type' => 'admin'];
-
-        $this->command->table($header, [$body]);
-    }
 
     private function createUserWithDummyStories(): void
     {
@@ -71,7 +52,6 @@ class DatabaseSeeder extends Seeder
             ->hasStories(rand(5, 10))
             ->create();
     }
-
 
 
 }

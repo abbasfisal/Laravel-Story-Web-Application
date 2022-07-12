@@ -77,8 +77,12 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
         #URL => api/user/story/
         #->name('user:story:')
 
-        Route::post('/store', [StoryController::class , 'store'])
+        Route::post('/store', [StoryController::class, 'store'])
              ->name('store');
+
+        Route::post('/like', [StoryController::class, 'like'])
+             ->name('like');
+
     });
 
 });
