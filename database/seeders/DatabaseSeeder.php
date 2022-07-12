@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->createAdmin();
-        
+
     }
 
     private function createAdmin()
