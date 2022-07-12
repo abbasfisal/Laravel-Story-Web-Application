@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
 
         $this->createUserWithDummyStories();
+
     }
 
     /*
@@ -28,7 +29,7 @@ class DatabaseSeeder extends Seeder
      |
      */
 
-    
+
     private function createAdmin()
     {
 
