@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\API\V1\Admin\Category\CategoryController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
+use App\Http\Controllers\API\V1\User\Story\StoryController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -22,7 +23,7 @@ Route::post('login', [AuthController::class, 'login'])
 
 Route::post('logout', [AuthController::class, 'logOut'])
      ->name('logout')
-     ->middleware('auth:sanctum ,can:is_admin');
+     ->middleware('auth:sanctum');
 
 /*
  |------------------------------
@@ -49,6 +50,35 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:', 'middleware' => ['auth:sanc
 
         Route::post('/store', [CategoryController::class, 'store'])
              ->name(':store');
+    });
+
+});
+
+
+/*
+ |------------------------------
+ | USER ROUTE GROUP
+ |------------------------------
+ |
+ |
+ |
+ */
+
+Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum'], function () {
+    #URL => api/user/
+    #->name('user:')
+
+    /*
+     |------------------------------
+     | STORY
+     |------------------------------
+     */
+    Route::group(['prefix' => 'story', 'as' => 'story:'], function () {
+        #URL => api/user/story/
+        #->name('user:story:')
+
+        Route::post('/store', [StoryController::class , 'store'])
+             ->name('store');
     });
 
 });

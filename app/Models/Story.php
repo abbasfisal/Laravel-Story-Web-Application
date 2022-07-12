@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Story extends Model
 {
     use HasFactory;
 
-    protected $table = 'categories';
+    protected $table = 'stories';
 
     protected $fillable = [
-        'title'
+        'user_id',
+        'title',
+        'text'
     ];
-
 
     /*
      |------------------------------
@@ -24,8 +25,13 @@ class Category extends Model
      |
      |
      */
-    public function stories()
+    public function user()
     {
-        return $this->hasMany(Story::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function Category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
