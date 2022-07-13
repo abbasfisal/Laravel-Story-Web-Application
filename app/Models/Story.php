@@ -12,6 +12,7 @@ class Story extends Model
     protected $table = 'stories';
 
     protected $fillable = [
+        'category_id' ,
         'user_id',
         'title',
         'text'
