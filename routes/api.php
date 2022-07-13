@@ -4,6 +4,8 @@
 use App\Http\Controllers\API\V1\Admin\Category\CategoryController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
 use App\Http\Controllers\API\V1\User\Comment\CommentController;
+use App\Http\Controllers\API\V1\User\Followers\FollowersController;
+use App\Http\Controllers\API\V1\User\Following\FollowingController;
 use App\Http\Controllers\API\V1\User\Story\StoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -92,13 +94,30 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
      |------------------------------
      */
     Route::group(['prefix' => 'comment', 'as' => 'comment:'], function () {
-
+        #URL => api/user/comment/
+        #->name('user:comment:')
         Route::post('/add', [CommentController::class, 'add'])
              ->name('add');
 
 
         Route::post('/reply', [CommentController::class, 'reply'])
              ->name('reply');
+
+    });
+
+    /*
+     |------------------------------
+     | FOLLOWERS
+     |------------------------------
+     */
+
+
+    Route::group(['prefix' => 'following', 'as' => 'following:'], function () {
+        #URL => api/user/following/
+        #->name('user:following:')
+
+        Route::post('/add', [FollowingController::class, 'add'])
+             ->name('add');
 
     });
 
