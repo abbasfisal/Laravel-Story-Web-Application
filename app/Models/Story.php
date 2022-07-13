@@ -11,12 +11,14 @@ class Story extends Model
 
     protected $table = 'stories';
 
+
     protected $fillable = [
-        'category_id' ,
+        'category_id',
         'user_id',
         'title',
         'text'
     ];
+
 
     /*
      |------------------------------
@@ -46,4 +48,12 @@ class Story extends Model
         return $this->morphMany(Comment::class, 'commentable')
                     ->whereNull('parent_id');
     }
+
+    //for calculate all comments count
+    public function allComments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
+
 }

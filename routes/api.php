@@ -3,10 +3,12 @@
 
 use App\Http\Controllers\API\V1\Admin\Category\CategoryController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
+use App\Http\Controllers\API\V1\Home\HomeController;
 use App\Http\Controllers\API\V1\User\Comment\CommentController;
 use App\Http\Controllers\API\V1\User\Followers\FollowersController;
 use App\Http\Controllers\API\V1\User\Following\FollowingController;
 use App\Http\Controllers\API\V1\User\Story\StoryController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 
@@ -119,7 +121,29 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
         Route::post('/add', [FollowingController::class, 'add'])
              ->name('add');
 
+        //TODO unfollow
+
     });
 
 
 });
+
+/*
+ |------------------------------
+ | HOME ROUTE
+ |------------------------------
+ |
+ |
+ |
+ */
+Route::get('/', [HomeController::class, 'index'])
+     ->name('index');
+
+Route::get('/category/{category}/{title}', function (Category $category) {
+    dd($category->toArray());
+})->name('stories:by:categoryId');
+
+
+Route::get('/user/{user}/{username}', function (\App\Models\User $user) {
+    dd($user->toArray());
+})->name('stories:by:userId');

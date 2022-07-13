@@ -43,4 +43,18 @@ class StoryService extends Controller
         return Story::query()
                     ->find($story_id);
     }
+
+    /**
+     * Get Stories with ites Relations
+     *
+     * @param $perPage
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public static function getWithPagination($perPage)
+    {
+        return Story::query()
+                    ->with(['category', 'user'])
+                    ->withCount(['allComments As comment_count'])
+                    ->paginate($perPage);
+    }
 }

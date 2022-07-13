@@ -44,5 +44,15 @@ return [
         'following'       => 'Following Was Successfull',
         'following_exist' => 'You followed this user',
 
-    ]
+    ],
+
+    /*
+     |------------------------------
+     | Pagination
+     |------------------------------
+     |
+     |
+     |
+     */
+    'perPage' => 10,
 ];
