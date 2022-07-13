@@ -5,7 +5,6 @@ use App\Http\Controllers\API\V1\Admin\Category\CategoryController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
 use App\Http\Controllers\API\V1\Home\HomeController;
 use App\Http\Controllers\API\V1\User\Comment\CommentController;
-use App\Http\Controllers\API\V1\User\Followers\FollowersController;
 use App\Http\Controllers\API\V1\User\Following\FollowingController;
 use App\Http\Controllers\API\V1\User\Story\StoryController;
 use App\Models\Category;
@@ -138,6 +137,8 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
  */
 Route::get('/', [HomeController::class, 'index'])
      ->name('index');
+
+Route::get('/story/{story}/{title}' ,[HomeController::class , 'getStory'])->name('get:story');
 
 Route::get('/category/{category}/{title}', function (Category $category) {
     dd($category->toArray());
