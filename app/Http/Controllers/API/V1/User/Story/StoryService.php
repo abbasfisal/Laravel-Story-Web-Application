@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API\V1\User\Story;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Story;
 use App\Models\StoryLike;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -55,6 +57,20 @@ class StoryService extends Controller
         return Story::query()
                     ->with(['category', 'user'])
                     ->withCount(['allComments As comment_count'])
+                    ->paginate($perPage);
+    }
+
+    public static function getByCategoryId($perPage, Category $category)
+    {
+        return Story::query()
+                    ->where('category_id', $category->id)
+                    ->paginate($perPage);
+    }
+
+    public static function getStoriesByWriterId($perPage, User $user)
+    {
+        return Story::with('user')
+                    ->where('user_id', $user->id)
                     ->paginate($perPage);
     }
 }

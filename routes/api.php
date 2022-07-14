@@ -7,7 +7,6 @@ use App\Http\Controllers\API\V1\Home\HomeController;
 use App\Http\Controllers\API\V1\User\Comment\CommentController;
 use App\Http\Controllers\API\V1\User\Following\FollowingController;
 use App\Http\Controllers\API\V1\User\Story\StoryController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 
@@ -138,13 +137,12 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
 Route::get('/', [HomeController::class, 'index'])
      ->name('index');
 
-Route::get('/story/{story}/{title}' ,[HomeController::class , 'getStory'])->name('get:story');
+Route::get('/story/{story}/{title}', [HomeController::class, 'getStory'])
+     ->name('get:story');
 
-Route::get('/category/{category}/{title}', function (Category $category) {
-    dd($category->toArray());
-})->name('stories:by:categoryId');
+Route::get('/category/{category}/{title}', [HomeController::class, 'getStoriesByCategoryId'])
+     ->name('stories:by:categoryId');
 
 
-Route::get('/user/{user}/{username}', function (\App\Models\User $user) {
-    dd($user->toArray());
-})->name('stories:by:userId');
+Route::get('/user/{user}/{username}', [HomeController::class, 'getStoriesByWriterId'])
+     ->name('stories:by:userId');
