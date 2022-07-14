@@ -42,7 +42,7 @@ class StoryController extends Controller
 
         $all_likes_result = StoryService::getAllLikes(config('story.perPage'), Auth::id());
         return UserLikeStoriesResource::collection($all_likes_result);
-        
+
     }
 
     public function getAllStories()

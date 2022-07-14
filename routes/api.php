@@ -52,7 +52,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:', 'middleware' => ['auth:sanc
         # ->name('admin:category:')
 
         Route::post('/store', [CategoryController::class, 'store'])
-             ->name(':store');
+             ->name('store');
+
+        Route::get('/all' , [CategoryController::class , 'getAllCategories'])
+            ->name('getAll');
     });
 
 });

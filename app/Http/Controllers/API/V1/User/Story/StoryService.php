@@ -76,7 +76,7 @@ class StoryService extends Controller
 
     public static function getAllLikes($perPage, $authId)
     {
-        return StoryLike::with('story')->where('user_id' ,$authId)->get();
+        return StoryLike::with('story')->where('user_id' ,$authId)->paginate($perPage);
     }
 
     public static function getUserStories($perPage, $authId)

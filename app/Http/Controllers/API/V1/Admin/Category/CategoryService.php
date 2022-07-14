@@ -17,4 +17,9 @@ class CategoryService extends Controller
                     $request->toArray()
                 );
     }
+
+    public static function getAll()
+    {
+        return Category::all();
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API\V1\Admin\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\V1\Admin\StoreCategoryRequest;
+use App\Http\Resources\API\V1\Admin\CategoryResource;
 use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
@@ -17,5 +18,11 @@ class CategoryController extends Controller
         }
 
         return $this->handleError(config('story.message.fail_create'), [], Response::HTTP_NO_CONTENT);
+    }
+
+    public function getAllCategories()
+    {
+        $all_categories_result = CategoryService::getAll();
+        return CategoryResource::collection($all_categories_result);
     }
 }
