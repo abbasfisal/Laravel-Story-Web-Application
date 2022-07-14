@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\API\V1\Admin\Category\CategoryController;
+use App\Http\Controllers\API\V1\Admin\User\UserController;
 use App\Http\Controllers\API\V1\Auth\AuthController;
 use App\Http\Controllers\API\V1\Home\HomeController;
 use App\Http\Controllers\API\V1\User\Comment\CommentController;
@@ -54,10 +55,26 @@ Route::group(['prefix' => 'admin', 'as' => 'admin:', 'middleware' => ['auth:sanc
         Route::post('/store', [CategoryController::class, 'store'])
              ->name('store');
 
-        Route::get('/all' , [CategoryController::class , 'getAllCategories'])
-            ->name('getAll');
+        Route::get('/all', [CategoryController::class, 'getAllCategories'])
+             ->name('getAll');
     });
 
+    /*
+     |------------------------------
+     | Users
+     |------------------------------
+     |
+     |
+     |
+     */
+    Route::group(['prefix' => 'users', 'as' => 'users:'], function () {
+        #URL => api/admin/users
+        # ->name('admin:users:')
+
+        Route::get('/all', [UserController::class, 'getAllUsers'])
+             ->name('all');
+
+    });
 });
 
 
