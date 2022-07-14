@@ -89,6 +89,9 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
         Route::get('/all-likes', [StoryController::class, 'getAllLikes'])
              ->name('allLikes');
 
+        Route::get('/all', [StoryController::class, 'getAllStories'])
+             ->name('all');
+
     });
 
     /*
@@ -125,12 +128,12 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
         //TODO unfollow
 
         //following list
-        Route::get('/list', [FollowingController::class , 'followingList'])
-            ->name('list');
+        Route::get('/list', [FollowingController::class, 'followingList'])
+             ->name('list');
 
         //followers list
-        Route::get('/followers' ,[FollowingController::class , 'followersList'])
-            ->name('followers-list');
+        Route::get('/followers', [FollowingController::class, 'followersList'])
+             ->name('followers-list');
 
     });
 

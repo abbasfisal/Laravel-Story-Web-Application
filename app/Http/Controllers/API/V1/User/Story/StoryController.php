@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\V1\User\LikeRequest;
 use App\Http\Requests\API\V1\User\StoreStoryRequest;
 use App\Http\Resources\API\V1\StoryResource;
+use App\Http\Resources\UserLikeStoriesResource;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -32,15 +33,23 @@ class StoryController extends Controller
             return $this->handleSuccess($like_result, config('story.message.create'));
         }
 
-        return $this->handleError(config('story.message.exist'),[] , 204);
+        return $this->handleError(config('story.message.exist'), [], 204);
 
     }
 
     public function getAllLikes()
     {
-        $all_likes_result =StoryService::getAllLikes(config('story.perPage'),Auth::id());
 
-        return StoryResource::collection($all_likes_result);
+        $all_likes_result = StoryService::getAllLikes(config('story.perPage'), Auth::id());
+        return UserLikeStoriesResource::collection($all_likes_result);
+        
+    }
+
+    public function getAllStories()
+    {
+        $stories_result = StoryService::getUserStories(config('story.perPage'), Auth::id());
+
+        return StoryResource::collection($stories_result);
 
     }
 }
