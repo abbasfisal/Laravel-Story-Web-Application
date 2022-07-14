@@ -86,6 +86,9 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
         Route::post('/like', [StoryController::class, 'like'])
              ->name('like');
 
+        Route::get('/all-likes', [StoryController::class, 'getAllLikes'])
+             ->name('allLikes');
+
     });
 
     /*
@@ -120,6 +123,14 @@ Route::group(['prefix' => 'user', 'as' => 'user:', 'middleware' => 'auth:sanctum
              ->name('add');
 
         //TODO unfollow
+
+        //following list
+        Route::get('/list', [FollowingController::class , 'followingList'])
+            ->name('list');
+
+        //followers list
+        Route::get('/followers' ,[FollowingController::class , 'followersList'])
+            ->name('followers-list');
 
     });
 
