@@ -122,7 +122,9 @@
     
 
 
-### Todo
-
-    - [ ] Must Implement **Edit** Section 
-    - [ ] Must Implement **Delete** Section
+## Todo
+    
+- [ ] Must Implement <b>Edit</b> Section 
+- [ ]  Must Implement <b> Delete </b> Section
+    
+    
