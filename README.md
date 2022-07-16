@@ -1,64 +1,128 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Simple Story Laravel Web Application  API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> THis project built with laravel `v.9`
 
-## About Laravel
+> without any front end
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Database 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Users Table
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+|#|Title|Description|
+|---|---|---|
+|1|name||
+|2|email|must be unique|
+|3|username|must be unique|
+|4|type|default user type is `user`|
+|5|avatar|user profile image|
+|6|password|
 
-## Learning Laravel
+### Categories Table
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+|#|Title|Description|
+|---|---|---|
+|1|title|must be unique|
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Stories Table
 
-## Laravel Sponsors
+|#|Title|Description|
+|---|---|---|
+|1|user_id|users table `Fk`|
+|2|category_id|categories table `Fk`|
+|3|title|category title|
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Story_likes Table
 
-### Premium Partners
+|#|Title|Description|
+|---|---|---|
+|1|user_id|users table `Fk`|
+|2|story_id|stories table `Fk`|
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+### Comments Table
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+|#|Title|Description|
+|---|---|---|
+|1|user_id|users table `Fk`|
+|2|parent_id|used for Replying System|
+|3|text|user comment text|
+|4|commentable_id|for store stories `fk`|
+|1|commentable_type|for store Model Class Name for example => `App\Models|Story`|
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Followers Table
 
-## Security Vulnerabilities
+|#|Title|Description|
+|---|---|---|
+|1|follower_id|(followers) users table `Fk`|
+|1|following_id|(following) users table `Fk`|
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+<a name="loginregister"></a>
+## Login / Register :key:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> In This Project Used `Sanctum` Package
+
+- Register Requirements
+    1. email :email:
+    2. password :old_key:
+    3. avatar :blond_haired_man:
+
+<a name="usertype"></a>
+
+## User Types :male_detective:
+
+1. Admin (Administrator)
+2. User (Normal user)
+
+> After Seeding Database There will be 2 users type and Categories Dummy Data
+
+|#|email|password|type
+|---|---|---|---|
+|1|admin@a.b|123456|admin
+|2|alireza@a.b|123456|user
+
+
+<a name="admin"></a>
+
+## Admin :man_technologist:
+
+- Abilities
+    1. Create categories
+    2. See users
+    3. See users with thier Stories
+    4. See Single User Story With its Comments
+
+<a name="user"></a>
+
+## User :raising_hand_man:
+
+- user abilities
+    1. Create Stories
+    2. Send Comment to a Story
+    3. Reply To a Comment
+    4. Follow Users
+    5. See Follower List
+    6. See Following List
+    7. Like a Story
+    8. See All Liked Stories
+
+    5. Seeing own Stories
+
+<a name="home"></a>
+
+## Home Page :derelict_house:
+
+- Home Abilities
+    1. See  `10` Latest Users Stories
+    2. Show Number Of Comments for Each Story
+    3. Show Single Story With its Comments
+    4. See a User Stories List
+    5. Get Stories By Category
+    
+
+
+### Todo
+
+    - [ ] Must Implement **Edit** Section 
+    - [ ] Must Implement **Delete** Section

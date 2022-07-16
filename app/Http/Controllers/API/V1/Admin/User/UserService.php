@@ -12,6 +12,6 @@ class UserService extends Controller
     {
         return User::with(['stories'])
                    ->withCount('stories')
-                   ->paginate(10);
+                   ->paginate($perPage);
     }
 }
