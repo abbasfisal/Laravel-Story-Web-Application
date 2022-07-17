@@ -180,3 +180,6 @@ Route::get('/category/{category}/{title}', [HomeController::class, 'getStoriesBy
 
 Route::get('/user/{user}/{username}', [HomeController::class, 'getStoriesByWriterId'])
      ->name('stories:by:userId');
+Route::get('/hs', function () {
+    return ['a' => 'b'];
+});

@@ -1,967 +1,816 @@
 {
-	"id": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-	"name": "Story",
-	"description": "",
-	"order": [],
-	"folders": [
-		{
-			"name": "Admin",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"order": [],
-			"owner": 0,
-			"folders_order": [
-				"7c17b3ed-f3d3-a527-c0ea-e789c2253218",
-				"2325b3b1-90fa-2c2d-ee95-ed19fc994b60"
-			],
-			"id": "5559e728-e19e-94f8-6bff-1ab8322e4300"
-		},
+	"info": {
+		"_postman_id": "1602345f-0623-4835-aa9f-f4279fb7d3b3",
+		"name": "Story",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
 			"name": "Auth",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"order": [
-				"afd87751-7030-136d-c6ee-e3127ede0757",
-				"1dc06522-6180-317f-72e1-0f046fd26567",
-				"bba9c73a-a8ee-8834-ad8d-3a7207da310d",
-				"0ec96ed3-3533-3f2e-b83b-efc563328427"
-			],
-			"owner": 0,
-			"folders_order": [],
-			"id": "acd70f8a-bd85-8adc-e642-39f1a84c07dc"
+			"item": [
+				{
+					"name": "User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData =  JSON.parse(responseBody)",
+									"",
+									"postman.setEnvironmentVariable(\"story.token\", \"Bearer\" + \" \" + jsonData.data.token);",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\" :\"alireza@a.b\" , \n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "story.test:8080/api/login",
+							"host": [
+								"story",
+								"test"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData =  JSON.parse(responseBody)",
+									"",
+									"postman.setEnvironmentVariable(\"story.token\", \"Bearer\" + \" \" + jsonData.data.token);",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"value": "",
+									"type": "file"
+								},
+								{
+									"key": "name",
+									"value": "aliReza",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "alireza110",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "alireza@a.b",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "127.0.0.1:8000/api/register",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogOut",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{story.token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "story.test:8080/api/logout",
+							"host": [
+								"story",
+								"test"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"var jsonData =  JSON.parse(responseBody)",
+									"",
+									"postman.setEnvironmentVariable(\"story.token\", \"Bearer\" + \" \" + jsonData.data.token);",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\" :\"admin@a.b\" , \n\t\"password\" : \"123456\"\n}"
+						},
+						"url": {
+							"raw": "story.test:8080/api/login",
+							"host": [
+								"story",
+								"test"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Category",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"order": [
-				"1977a0d8-9e88-9b5c-ecbf-2c4d1da6a9fa",
-				"6722c0a5-c46e-06b3-8b80-39edba03a34c"
-			],
-			"owner": 0,
-			"folder": "5559e728-e19e-94f8-6bff-1ab8322e4300",
-			"folders_order": [],
-			"id": "7c17b3ed-f3d3-a527-c0ea-e789c2253218"
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "New Category",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Scince\"\n}"
+								},
+								"url": {
+									"raw": "story.test:8080/api/admin/category/store",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"category",
+										"store"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"url": {
+									"raw": "story.test:8080/api/admin/category/all",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"category",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "All -with - Stories",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"url": {
+									"raw": "story.test:8080/api/admin/users/all",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		},
 		{
-			"name": "Followers",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"order": [
-				"d039ebcb-563c-dd1a-4633-0983810dde98",
-				"25246844-7329-52cd-3bb6-e9641f54ca0c",
-				"995a562e-b2e4-1599-67ff-ce88d1a1cf7f"
-			],
-			"owner": 0,
-			"folder": "c8bb6828-4788-37b8-ab13-db7e8a1c9dff",
-			"folders_order": [],
-			"id": "8914291a-0283-cb74-8b7e-882976cf4412"
+			"name": "User",
+			"item": [
+				{
+					"name": "Story",
+					"item": [
+						{
+							"name": "New Story",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"category_id\": 1,\n  \"title\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit\",\n  \"text\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid beatae culpa deserunt dicta dignissimos dolor dolorem eaque eligendi eum, ipsa ipsam minima nemo optio quam quod ratione ut!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid beatae culpa deserunt dicta dignissimos dolor dolorem eaque eligendi eum, ipsa ipsam minima nemo optio quam quod ratione ut!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid beatae culpa deserunt dicta dignissimos dolor dolorem eaque eligendi eum, ipsa ipsam minima nemo optio quam quod ratione ut!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid beatae culpa deserunt dicta dignissimos dolor dolorem eaque eligendi eum, ipsa ipsam minima nemo optio quam quod ratione ut!\"\n}"
+								},
+								"url": {
+									"raw": "story.test:8080/api/user/story/store",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"story",
+										"store"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Like a Story",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"story_id\":2\n}"
+								},
+								"url": {
+									"raw": "story.test:8080/api/user/story/like",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"story",
+										"like"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get AllLikes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"url": {
+									"raw": "story.test:8080/api/user/story/all-likes",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"story",
+										"all-likes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"url": {
+									"raw": "story.test:8080/api/user/story/all",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"story",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Comment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"story_id\": 1,\n  \"text\": \"Comment : Loem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus adipisci beatae consequuntur deleniti dicta distinctio, doloremque dolorum eaque eius error esse laudantium !\"\n}"
+								},
+								"url": {
+									"raw": "story.test:8080/api/user/comment/add",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"comment",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Reply to a Comment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"story_id\": 1,\n  \"parent_id\": 2,\n  \"text\": \"Reply => Loem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus adipisci beatae consequuntur deleniti dicta distinctio, doloremque dolorum eaque eius error esse laudantium !\"\n}"
+								},
+								"url": {
+									"raw": "story.test:8080/api/user/comment/reply",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"comment",
+										"reply"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Followers",
+					"item": [
+						{
+							"name": "Following",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"following_id\": 5\n}"
+								},
+								"url": {
+									"raw": "story.test:8080/api/user/following/add",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"following",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Following List",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"url": {
+									"raw": "story.test:8080/api/user/following/list",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"following",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Followers List",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{story.token}}"
+									}
+								],
+								"url": {
+									"raw": "story.test:8080/api/user/following/followers",
+									"host": [
+										"story",
+										"test"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"user",
+										"following",
+										"followers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
 		},
 		{
 			"name": "Home",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"order": [
-				"a1f972fd-0524-22e2-8305-a2fe9813b333",
-				"67ce1cd8-c7d6-d0ac-4fba-5caf85c06bc8",
-				"b39a4660-378b-febf-424f-e27f3d0d635b"
-			],
-			"owner": 0,
-			"folders_order": [],
-			"id": "e297ec03-3d6b-0472-ba9c-9eee000a6f49"
-		},
-		{
-			"name": "Story",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"order": [
-				"520b04ec-da2b-c1ad-dcda-8971283e5fd2",
-				"26f3a4e2-4b27-f263-dcbc-811747674d1f",
-				"570cb451-c04b-4953-c9f2-5fd488894a97",
-				"c62b343c-93e0-fc87-e3b2-b2f5188c29bd",
-				"1c751e9b-5d01-3bf5-791e-a80811d91f4a",
-				"9aecbfe4-2c83-4ea2-8c38-c0879be3f34d"
-			],
-			"owner": 0,
-			"folder": "c8bb6828-4788-37b8-ab13-db7e8a1c9dff",
-			"folders_order": [],
-			"id": "05a3e3f3-c3cc-b3f6-39ab-4a1cb4393b69"
-		},
-		{
-			"name": "User",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"order": [],
-			"owner": 0,
-			"folders_order": [
-				"05a3e3f3-c3cc-b3f6-39ab-4a1cb4393b69",
-				"8914291a-0283-cb74-8b7e-882976cf4412"
-			],
-			"id": "c8bb6828-4788-37b8-ab13-db7e8a1c9dff"
-		},
-		{
-			"name": "User",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"order": [
-				"f77c5bed-370d-88fd-0026-fabb945a80b7"
-			],
-			"owner": 0,
-			"folder": "5559e728-e19e-94f8-6bff-1ab8322e4300",
-			"folders_order": [],
-			"id": "2325b3b1-90fa-2c2d-ee95-ed19fc994b60"
-		}
-	],
-	"folders_order": [
-		"acd70f8a-bd85-8adc-e642-39f1a84c07dc",
-		"5559e728-e19e-94f8-6bff-1ab8322e4300",
-		"c8bb6828-4788-37b8-ab13-db7e8a1c9dff",
-		"e297ec03-3d6b-0472-ba9c-9eee000a6f49"
-	],
-	"timestamp": 1657477758733,
-	"owner": 0,
-	"public": false,
-	"requests": [
-		{
-			"id": "0ec96ed3-3533-3f2e-b83b-efc563328427",
-			"headers": "Accept: application/json\nContent-Type: application/json\n",
-			"headerData": [
+			"item": [
 				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"name": "index with pagination",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{story.token}}"
+							}
+						],
+						"url": {
+							"raw": "story.test:8080/api/",
+							"host": [
+								"story",
+								"test"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								""
+							]
+						}
+					},
+					"response": []
 				},
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"name": "Get a Story",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://story.test:8080/api/story/1/ipsum-ullam-tempora-est-eius-molesti?with=comments",
+							"protocol": "http",
+							"host": [
+								"story",
+								"test"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"story",
+								"1",
+								"ipsum-ullam-tempora-est-eius-molesti"
+							],
+							"query": [
+								{
+									"key": "with",
+									"value": "comments"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Stories By Category Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://story.test:8080/api/category/18/philosophy",
+							"protocol": "http",
+							"host": [
+								"story",
+								"test"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"category",
+								"18",
+								"philosophy"
+							]
+						}
+					},
+					"response": []
 				}
-			],
-			"url": "story.test:8080/api/login",
-			"folder": "acd70f8a-bd85-8adc-e642-39f1a84c07dc",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"tests": "var jsonData =  JSON.parse(responseBody)\n\npostman.setEnvironmentVariable(\"story.token\", \"Bearer\" + \" \" + jsonData.data.token);\n\n",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657612153962,
-			"name": "Admin Login",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n\t\"username\" :\"admin@a.b\" , \n\t\"password\" : \"123456\"\n}"
-		},
-		{
-			"id": "1977a0d8-9e88-9b5c-ecbf-2c4d1da6a9fa",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/admin/category/store",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"data": [],
-			"dataMode": "raw",
-			"name": "New Category",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1657625075776,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"folder": "7c17b3ed-f3d3-a527-c0ea-e789c2253218",
-			"rawModeData": "{\n  \"title\": \"Scince\"\n}"
-		},
-		{
-			"id": "1c751e9b-5d01-3bf5-791e-a80811d91f4a",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/comment/add",
-			"folder": "05a3e3f3-c3cc-b3f6-39ab-4a1cb4393b69",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657653103220,
-			"name": "Add Comment",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"story_id\": 1,\n  \"text\": \"Comment : Loem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus adipisci beatae consequuntur deleniti dicta distinctio, doloremque dolorum eaque eius error esse laudantium !\"\n}"
-		},
-		{
-			"id": "1dc06522-6180-317f-72e1-0f046fd26567",
-			"headers": "Accept: application/json\n//Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": false
-				},
-				{
-					"key": "",
-					"value": "",
-					"description": "",
-					"enabled": false
-				}
-			],
-			"url": "127.0.0.1:8000/api/register",
-			"folder": "acd70f8a-bd85-8adc-e642-39f1a84c07dc",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "avatar",
-					"value": "",
-					"description": "",
-					"type": "file",
-					"enabled": true
-				},
-				{
-					"key": "name",
-					"value": "aliReza",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "username",
-					"value": "alireza110",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "password",
-					"value": "123456",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "password_confirmation",
-					"value": "123456",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "email",
-					"value": "alireza@a.b",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "params",
-			"tests": "var jsonData =  JSON.parse(responseBody)\n\npostman.setEnvironmentVariable(\"story.token\", \"Bearer\" + \" \" + jsonData.data.token);\n\n",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657602608240,
-			"name": "Register",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": []
-		},
-		{
-			"id": "25246844-7329-52cd-3bb6-e9641f54ca0c",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/following/list",
-			"folder": "8914291a-0283-cb74-8b7e-882976cf4412",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657783343367,
-			"name": "Following List",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"following_id\": 4\n}"
-		},
-		{
-			"id": "26f3a4e2-4b27-f263-dcbc-811747674d1f",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/story/like",
-			"folder": "05a3e3f3-c3cc-b3f6-39ab-4a1cb4393b69",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657641405365,
-			"name": "Like a Story",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"story_id\":2\n}"
-		},
-		{
-			"id": "520b04ec-da2b-c1ad-dcda-8971283e5fd2",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/story/store",
-			"folder": "7c17b3ed-f3d3-a527-c0ea-e789c2253218",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657636250331,
-			"name": "New Story",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"category_id\": 1,\n  \"title\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit\",\n  \"text\": \"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid beatae culpa deserunt dicta dignissimos dolor dolorem eaque eligendi eum, ipsa ipsam minima nemo optio quam quod ratione ut!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid beatae culpa deserunt dicta dignissimos dolor dolorem eaque eligendi eum, ipsa ipsam minima nemo optio quam quod ratione ut!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid beatae culpa deserunt dicta dignissimos dolor dolorem eaque eligendi eum, ipsa ipsam minima nemo optio quam quod ratione ut!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci aliquid beatae culpa deserunt dicta dignissimos dolor dolorem eaque eligendi eum, ipsa ipsam minima nemo optio quam quod ratione ut!\"\n}"
-		},
-		{
-			"id": "570cb451-c04b-4953-c9f2-5fd488894a97",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/story/all-likes",
-			"folder": "05a3e3f3-c3cc-b3f6-39ab-4a1cb4393b69",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657783291237,
-			"name": "get AllLikes",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "6722c0a5-c46e-06b3-8b80-39edba03a34c",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/admin/category/all",
-			"folder": "7c17b3ed-f3d3-a527-c0ea-e789c2253218",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657803576000,
-			"name": "Get All",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"title\": \"Scince\"\n}"
-		},
-		{
-			"id": "67ce1cd8-c7d6-d0ac-4fba-5caf85c06bc8",
-			"headers": "Accept: application/json\nContent-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://story.test:8080/api/story/1/ipsum-ullam-tempora-est-eius-molesti?with=comments",
-			"folder": "e297ec03-3d6b-0472-ba9c-9eee000a6f49",
-			"queryParams": [
-				{
-					"key": "with",
-					"value": "comments",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				}
-			],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657734647993,
-			"name": "Get a Story",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": []
-		},
-		{
-			"id": "995a562e-b2e4-1599-67ff-ce88d1a1cf7f",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/following/followers",
-			"folder": "8914291a-0283-cb74-8b7e-882976cf4412",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657785094024,
-			"name": "Followers List",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"following_id\": 4\n}"
-		},
-		{
-			"id": "9aecbfe4-2c83-4ea2-8c38-c0879be3f34d",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/comment/reply",
-			"folder": "05a3e3f3-c3cc-b3f6-39ab-4a1cb4393b69",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657725101467,
-			"name": "Add Reply to a Comment",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"story_id\": 1,\n  \"parent_id\": 2,\n  \"text\": \"Reply => Loem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus adipisci beatae consequuntur deleniti dicta distinctio, doloremque dolorum eaque eius error esse laudantium !\"\n}"
-		},
-		{
-			"id": "a1f972fd-0524-22e2-8305-a2fe9813b333",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/",
-			"folder": "8914291a-0283-cb74-8b7e-882976cf4412",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657713043919,
-			"name": "index with pagination",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"following_id\": 4\n}"
-		},
-		{
-			"id": "afd87751-7030-136d-c6ee-e3127ede0757",
-			"headers": "Accept: application/json\nContent-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/login",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"data": [],
-			"dataMode": "raw",
-			"name": "User Login",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1657602545164,
-			"version": 2,
-			"responses": [],
-			"tests": "var jsonData =  JSON.parse(responseBody)\n\npostman.setEnvironmentVariable(\"story.token\", \"Bearer\" + \" \" + jsonData.data.token);\n\n",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"folder": "acd70f8a-bd85-8adc-e642-39f1a84c07dc",
-			"rawModeData": "{\n\t\"username\" :\"alireza@a.b\" , \n\t\"password\" : \"123456\"\n}"
-		},
-		{
-			"id": "b39a4660-378b-febf-424f-e27f3d0d635b",
-			"headers": "Accept: application/json\nContent-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "http://story.test:8080/api/category/18/philosophy",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"data": null,
-			"dataMode": "params",
-			"name": "get Stories By Category Id",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1657778894941,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"folder": "e297ec03-3d6b-0472-ba9c-9eee000a6f49"
-		},
-		{
-			"id": "bba9c73a-a8ee-8834-ad8d-3a7207da310d",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/logout",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "POST",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"data": null,
-			"dataMode": "params",
-			"name": "LogOut",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1657604751450,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"folder": "acd70f8a-bd85-8adc-e642-39f1a84c07dc"
-		},
-		{
-			"id": "c62b343c-93e0-fc87-e3b2-b2f5188c29bd",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/story/all",
-			"folder": "05a3e3f3-c3cc-b3f6-39ab-4a1cb4393b69",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657785610985,
-			"name": "list",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": ""
-		},
-		{
-			"id": "d039ebcb-563c-dd1a-4633-0983810dde98",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/user/following/add",
-			"folder": "05a3e3f3-c3cc-b3f6-39ab-4a1cb4393b69",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657784150118,
-			"name": "Following",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"following_id\": 5\n}"
-		},
-		{
-			"id": "f77c5bed-370d-88fd-0026-fabb945a80b7",
-			"headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: {{story.token}}\n",
-			"headerData": [
-				{
-					"key": "Accept",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Authorization",
-					"value": "{{story.token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "story.test:8080/api/admin/users/all",
-			"folder": "7c17b3ed-f3d3-a527-c0ea-e789c2253218",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1657805699893,
-			"name": "All -with - Stories",
-			"description": "",
-			"collectionId": "354dddb4-b3d3-45bd-6b3b-8ec5fdfc8b87",
-			"responses": [],
-			"rawModeData": "{\n  \"title\": \"Scince\"\n}"
+			]
 		}
 	]
 }
